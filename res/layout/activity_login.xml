@@ -30,7 +30,7 @@
             android:paddingLeft="5dp"
             android:textSize="25dp"
             android:background="@drawable/border_color"
-            android:text="Aarsh_Sahu" />
+            android:text="bh_9097433" />
 
         <View
             android:layout_width="fill_parent"
@@ -48,7 +48,7 @@
             android:textSize="25dp"
             android:background="@drawable/border_color"
             android:password="true"
-            android:text="123" />
+            android:text="4321" />
 
         <View
             android:layout_width="fill_parent"
