@@ -6,26 +6,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/assign_bg"
-         >
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
             android:orientation="vertical"
-            android:padding="10dp"
-             >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="10dp"
-                android:text="Assign New Assignment"
-                android:textColor="#000000"
-                android:textSize="25dp" />
+            android:padding="10dp" >
 
             <TextView
                 android:id="@+id/tv_aname"
@@ -33,7 +20,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Assignment Name:"
-                android:textColor="#000000"
                 android:textSize="20sp" />
 
             <EditText
@@ -41,8 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:inputType="text"
-                android:textColor="#000000" >
+                android:inputType="text" >
             </EditText>
 
             <TextView
@@ -53,7 +38,6 @@
                 android:layout_marginTop="10dp"
                 android:inputType="number"
                 android:text="Priority :"
-                android:textColor="#000000"
                 android:textSize="20sp" />
 
             <RadioGroup
@@ -69,81 +53,31 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="20dp"
                     android:checked="true"
-                    android:text="High Value"
-                    android:textColor="#000000" />
+                    android:text="High Value" />
 
                 <RadioButton
                     android:id="@+id/LV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Normal"
-                    android:textColor="#000000" />
+                    android:text="Low Value" />
             </RadioGroup>
 
-            <LinearLayout
-                android:id="@+id/recurrence_layout"
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dp"
+                android:text="AssignmentType"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/sp_type"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="10dp" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="10dp"
-                    android:text="Recurrence interval"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-
-                <RadioGroup
-                    android:id="@+id/tx_recurrence"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical" >
-
-                    <RadioButton
-                        android:id="@+id/daily"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:checked="true"
-                        android:text="Daily"
-                        android:textColor="#000000" />
-
-                    <RadioButton
-                        android:id="@+id/weekly"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Weekly"
-                        android:textColor="#000000" />
-
-                    <RadioButton
-                        android:id="@+id/monthly"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:text="Monthly"
-                        android:textColor="#000000" />
-
-                    <RadioButton
-                        android:id="@+id/quaterly"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Quaterly"
-                        android:textColor="#000000" />
-
-                    <RadioButton
-                        android:id="@+id/yearly"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:text="Yearly"
-                        android:textColor="#000000" />
-                </RadioGroup>
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:entries="@array/Assgn_array"
+                android:prompt="@string/Assgn_Type_Prompt" />
 
             <TextView
                 android:id="@+id/tv_desc"
@@ -152,7 +86,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginTop="10dp"
                 android:text="Description"
-                android:textColor="#000000"
                 android:textSize="20sp" />
 
             <EditText
@@ -161,30 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:height="100dp"
-                android:maxLines="15"
-                android:textColor="#000000" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="30dp"
-                android:weightSum="2" >
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/Assign"
-                    android:text="Assign" />
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/Cancel"
-                    android:text="Cancel" />
-            </LinearLayout>
+                android:maxLines="15" />
         </LinearLayout>
     </ScrollView>
 
