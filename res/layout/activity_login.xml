@@ -1,84 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/signin_bg"
-    android:orientation="vertical"
-    android:weightSum="100" >
+    android:background="@drawable/signin_bg" >
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="10" >
-    </RelativeLayout>
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="80dp"
-        android:layout_weight="90"
-        android:orientation="vertical"
-        android:weightSum="40" >
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" >
 
-        <EditText
-            android:id="@+id/uname"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="4.5"
-            android:paddingLeft="5dp"
-            android:textSize="25dp"
-            android:background="@drawable/border_color"
-            android:text="Aarsh_Sahu" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/login_gradient"
+            android:orientation="vertical" >
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4.5" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
 
-        <EditText
-            android:id="@+id/upass"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="4.5"
-            android:paddingLeft="5dp"
-            android:textSize="25dp"
-            android:background="@drawable/border_color"
-            android:password="true"
-            android:text="123" />
+            <EditText
+                android:id="@+id/uname"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/edittext_color"
+                android:hint="USERNAME"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textSize="20sp" />
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3.5" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
 
-        <Button
-            android:id="@+id/login"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="5"
-            android:background="@drawable/btn_login"
-            android:padding="10dp" />
+            <EditText
+                android:id="@+id/upass"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/edittext_color"
+                android:hint="PASSWORD"
+                android:paddingLeft="10dp"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textSize="20sp" />
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
 
-        <TextView
-            android:id="@+id/FgtPass"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="5"
-            android:clickable="true"
-            android:text="FORGOT PASSWORD ?"
-            android:textSize="15dp"
-            android:typeface="sans" />
-    </LinearLayout>
+            <CheckBox
+                android:id="@+id/rememberMe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:paddingLeft="50dp"
+                android:text="REMEMBER ME"
+                android:textColor="#333333"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-</LinearLayout>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+            <Button
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/btn_login"
+                android:padding="10dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp" />
+
+            <TextView
+                android:id="@+id/FgtPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="15dp"
+                android:clickable="true"
+                android:text="Don`t remember your password ?"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:typeface="sans" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

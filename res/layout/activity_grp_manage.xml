@@ -45,7 +45,7 @@
             android:layout_marginLeft="15dp"
             android:layout_weight="1.9"
             android:id="@+id/search"
-            android:background="@drawable/border_color"
+            android:background="@drawable/edittext_color"
             android:paddingLeft="15dp"
 			android:windowSoftInputMode="stateHidden"	
             android:hint="Search" />
@@ -60,6 +60,7 @@
 
     <com.costum.android.widget.LoadMoreListView
         android:id="@+id/android:list"
+        android:layout_marginTop="10dp"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
          />
