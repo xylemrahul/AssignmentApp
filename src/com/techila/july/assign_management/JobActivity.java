@@ -1,18 +1,18 @@
 package com.techila.july.assign_management;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.techila.july.assign_management.util.PrefSingleton;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.techila.july.assign_management.util.PrefSingleton;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class JobActivity extends Activity {
 

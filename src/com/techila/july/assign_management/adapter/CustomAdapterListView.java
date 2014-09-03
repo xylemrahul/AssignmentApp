@@ -1,26 +1,5 @@
 package com.techila.july.assign_management.adapter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.techila.july.assign_management.JobActivity;
-import com.techila.july.assign_management.R;
-import com.techila.july.assign_management.Assign_Details;
-import com.techila.july.assign_management.Grp_Manage;
-import com.techila.july.assign_management.Mem_Manage;
-import com.techila.july.assign_management.config.Appconstant;
-import com.techila.july.assign_management.util.JSONParser;
-import com.techila.july.assign_management.util.PrefSingleton;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -40,6 +19,27 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.techila.july.assign_management.Assign_Details;
+import com.techila.july.assign_management.Grp_Manage;
+import com.techila.july.assign_management.JobActivity;
+import com.techila.july.assign_management.Mem_Manage;
+import com.techila.july.assign_management.R;
+import com.techila.july.assign_management.config.Appconstant;
+import com.techila.july.assign_management.util.JSONParser;
+import com.techila.july.assign_management.util.PrefSingleton;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
 
 public class CustomAdapterListView extends BaseAdapter {
 

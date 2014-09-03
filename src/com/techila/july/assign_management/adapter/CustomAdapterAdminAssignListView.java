@@ -1,14 +1,5 @@
 package com.techila.july.assign_management.adapter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-
-import com.techila.july.assign_management.R;
-import com.techila.july.assign_management.config.Appconstant;
-import com.techila.july.assign_management.util.PrefSingleton;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,6 +10,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.techila.july.assign_management.R;
+import com.techila.july.assign_management.config.Appconstant;
+import com.techila.july.assign_management.util.PrefSingleton;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 
 public class CustomAdapterAdminAssignListView extends BaseAdapter {
 

@@ -1,19 +1,9 @@
 package com.techila.july.assign_management;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.support.v4.app.ListFragment;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,148 +16,167 @@ import com.techila.july.assign_management.config.Appconstant;
 import com.techila.july.assign_management.util.JSONParser;
 import com.techila.july.assign_management.util.PrefSingleton;
 
-public class DeferredFragment extends ListFragment{
-	
-	JSONParser jsonParser = new JSONParser();
-	ArrayList<HashMap<String, String>> AssignmentList;
-	private PrefSingleton mMyPreferences;
-	HashMap<String, String> map;
-	HashMap<String, String> map1;
-	// products JSONArray
-	JSONArray inbox = null;
-	ProgressDialog prg;
-	String Member_Id, jsonArray = null;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-	// Inbox JSON url
-	private static final String ASSIGNMENT_URL = "http://phbjharkhand.in/AssignmentApplication/Get_Type_Member_Status_Wise_Details.php";
-	
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		
-		View rootView = inflater.inflate(R.layout.fragment_deferred, container,
-				false);
-		
-		mMyPreferences = PrefSingleton.getInstance();
-		mMyPreferences.Initialize(getActivity());
-		// Hashmap for ListView
-		AssignmentList = new ArrayList<HashMap<String, String>>();
-		
-		return rootView;
-	}
-	
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onActivityCreated(savedInstanceState);
-	
-		Member_Id = mMyPreferences.getPreference("Mem_Id");
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-		// Loading INBOX in Background Thread
-		new LoadDeferred().execute();
-	}
-	
-	class LoadDeferred extends AsyncTask<Void, Void, Integer> {
+public class DeferredFragment extends ListFragment {
 
-		@Override
-		protected void onPreExecute() {
+    JSONParser jsonParser = new JSONParser();
+    ArrayList<HashMap<String, String>> AssignmentList;
+    private PrefSingleton mMyPreferences;
+    HashMap<String, String> map;
+    HashMap<String, String> map1;
+    // products JSONArray
+    JSONArray inbox = null;
+    ProgressDialog prg;
+    String Member_Id, jsonArray = null;
 
-			super.onPreExecute();
-			prg = new ProgressDialog(getActivity());
-			prg.setMessage("Loading List ...");
-			prg.setIndeterminate(false);
-			prg.setCancelable(false);
-			prg.show();
+    // Inbox JSON url
+    private static final String ASSIGNMENT_URL = "http://phbjharkhand.in/AssignmentApplication/Get_Type_Member_Status_Wise_Details.php";
 
-			super.onPreExecute();
-		}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-		@Override
-		protected Integer doInBackground(Void... params) {
+        View rootView = inflater.inflate(R.layout.fragment_deferred, container,
+                false);
 
-			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+        mMyPreferences = PrefSingleton.getInstance();
+        mMyPreferences.Initialize(getActivity());
+        // Hashmap for ListView
+        AssignmentList = new ArrayList<HashMap<String, String>>();
 
-			if ("One Time Job".equals(mMyPreferences.getPreference("JobType"))) {
-				params1.add(new BasicNameValuePair("assType", mMyPreferences
-						.getPreference("JobType")));
-			} else if ("Short Term Job".equals(mMyPreferences
-					.getPreference("JobType"))) {
-				params1.add(new BasicNameValuePair("assType", mMyPreferences
-						.getPreference("JobType")));
-			} else if ("Long Term Job".equals(mMyPreferences
-					.getPreference("JobType"))) {
-				params1.add(new BasicNameValuePair("assType", mMyPreferences
-						.getPreference("JobType")));
-			} else if ("Specific Date Job".equals(mMyPreferences
-					.getPreference("JobType"))) {
-				params1.add(new BasicNameValuePair("assType", mMyPreferences
-						.getPreference("JobType")));
-			}
+        return rootView;
+    }
 
-			params1.add(new BasicNameValuePair("memberID", Member_Id));
-			params1.add(new BasicNameValuePair("status", "Deferred"));
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onActivityCreated(savedInstanceState);
 
-			String error_code = null;
+        Member_Id = mMyPreferences.getPreference("Mem_Id");
 
-			// getting JSON string from URL
-			JSONObject json = jsonParser.makeHttpRequest(ASSIGNMENT_URL,
-					"POST", params1);
+    }
 
-			// Check your log cat for JSON response
-			Log.d("Deferred JSON: ", json.toString());
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
 
-			try {
-				JSONObject jsonObj = json.getJSONObject("data");
-				error_code = jsonObj.getString("Error_Code");
-				if ("1".equals(error_code)) {
+        if (isVisibleToUser) {
+            // Loading INBOX in Background Thread
+            new LoadDeferred().execute();
+        }
+    }
 
-					JSONArray jsonArray = null;
-					jsonArray = jsonObj.getJSONArray(Appconstant.TAG_RESULT);
-					// looping through All messages
-					for (int i = 0; i < jsonArray.length(); i++) {
-						JSONObject c = jsonArray.getJSONObject(i);
+    class LoadDeferred extends AsyncTask<Void, Void, Integer> {
 
-						map = new HashMap<String, String>();
-						// Storing each json item in variable
-						String date = c.getString(Appconstant.TAG_DATE);
-						String status = c.getString(Appconstant.TAG_STATUS);
-						String name = c.getString(Appconstant.TAG_ASS_NAME);
-						map.put(Appconstant.TAG_DATE, date);
-						map.put(Appconstant.TAG_ASS_NAME, name);
-						map.put(Appconstant.TAG_STATUS, status);
-						if (status.equals("Deferred")) {
-							// adding HashList to ArrayList
-							AssignmentList.add(map);
-						}
-					}
-				}
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
+        @Override
+        protected void onPreExecute() {
 
-			return Integer.parseInt(error_code);
-		}
+            super.onPreExecute();
+            prg = new ProgressDialog(getActivity());
+            prg.setMessage("Loading List ...");
+            prg.setIndeterminate(false);
+            prg.setCancelable(false);
+            prg.show();
 
-		@Override
-		protected void onPostExecute(Integer error_num) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(error_num);
-			if (prg.isShowing()) {
-				prg.dismiss();
-			}
+            super.onPreExecute();
+        }
 
-			if (error_num == 2) {
+        @Override
+        protected Integer doInBackground(Void... params) {
 
-				Toast.makeText(getActivity(),
+            List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+
+            if ("One Time Job".equals(mMyPreferences.getPreference("JobType"))) {
+                params1.add(new BasicNameValuePair("assType", mMyPreferences
+                        .getPreference("JobType")));
+            } else if ("Short Term Job".equals(mMyPreferences
+                    .getPreference("JobType"))) {
+                params1.add(new BasicNameValuePair("assType", mMyPreferences
+                        .getPreference("JobType")));
+            } else if ("Long Term Job".equals(mMyPreferences
+                    .getPreference("JobType"))) {
+                params1.add(new BasicNameValuePair("assType", mMyPreferences
+                        .getPreference("JobType")));
+            } else if ("Specific Date Job".equals(mMyPreferences
+                    .getPreference("JobType"))) {
+                params1.add(new BasicNameValuePair("assType", mMyPreferences
+                        .getPreference("JobType")));
+            }
+
+            params1.add(new BasicNameValuePair("memberID", Member_Id));
+            params1.add(new BasicNameValuePair("status", "Deferred"));
+
+            String error_code = null;
+
+            // getting JSON string from URL
+            JSONObject json = jsonParser.makeHttpRequest(ASSIGNMENT_URL,
+                    "POST", params1);
+
+            // Check your log cat for JSON response
+            Log.d("Deferred JSON: ", json.toString());
+
+            try {
+                JSONObject jsonObj = json.getJSONObject("data");
+                error_code = jsonObj.getString("Error_Code");
+                if ("1".equals(error_code)) {
+
+                    JSONArray jsonArray = null;
+                    jsonArray = jsonObj.getJSONArray(Appconstant.TAG_RESULT);
+                    // looping through All messages
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject c = jsonArray.getJSONObject(i);
+
+                        map = new HashMap<String, String>();
+                        // Storing each json item in variable
+                        String date = c.getString(Appconstant.TAG_DATE);
+                        String status = c.getString(Appconstant.TAG_STATUS);
+                        String name = c.getString(Appconstant.TAG_ASS_NAME);
+                        map.put(Appconstant.TAG_DATE, date);
+                        map.put(Appconstant.TAG_ASS_NAME, name);
+                        map.put(Appconstant.TAG_STATUS, status);
+
+                        if (status.equals("Deferred")) {
+                            // adding HashList to ArrayList
+                            AssignmentList.add(map);
+                        }
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return Integer.parseInt(error_code);
+        }
+
+        @Override
+        protected void onPostExecute(Integer error_num) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(error_num);
+            if (prg.isShowing()) {
+                prg.dismiss();
+            }
+
+            if (error_num == 2) {
+
+                Toast.makeText(getActivity(),
 						"There are no assignments", Toast.LENGTH_LONG).show();
-			}
+            }
 
-			ListAdapter adapter = new SimpleAdapter(getActivity(),
-					AssignmentList, R.layout.activity_tab_list_view,
-					new String[] { Appconstant.TAG_ASS_NAME, Appconstant.TAG_DATE }, new int[] {
-							R.id.status, R.id.created_date });
-			setListAdapter(adapter);
+            ListAdapter adapter = new SimpleAdapter(getActivity(),
+                    AssignmentList, R.layout.activity_tab_list_view,
+                    new String[]{Appconstant.TAG_ASS_NAME, Appconstant.TAG_DATE}, new int[]{
+                    R.id.status, R.id.created_date});
+            setListAdapter(adapter);
 
-		}
-	}
+        }
+    }
 }

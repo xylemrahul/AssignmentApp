@@ -1,8 +1,10 @@
 package com.techila.july.assign_management;
 
-import static com.techila.july.assign_management.CommonUtilities.SERVER_URL;
-import static com.techila.july.assign_management.CommonUtilities.TAG;
-import static com.techila.july.assign_management.CommonUtilities.displayMessage;
+import android.content.Context;
+import android.util.Log;
+
+import com.google.android.gcm.GCMRegistrar;
+import com.techila.july.assign_management.R;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -15,11 +17,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
-import android.content.Context;
-import android.util.Log;
-
-import com.techila.july.assign_management.R;
-import com.google.android.gcm.GCMRegistrar;
+import static com.techila.july.assign_management.CommonUtilities.SERVER_URL;
+import static com.techila.july.assign_management.CommonUtilities.TAG;
+import static com.techila.july.assign_management.CommonUtilities.displayMessage;
 
 public final class ServerUtilities {
 	private static final int MAX_ATTEMPTS = 5;

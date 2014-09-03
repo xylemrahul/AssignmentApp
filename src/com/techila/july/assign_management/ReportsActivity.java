@@ -1,12 +1,5 @@
 package com.techila.july.assign_management;
 
-import com.techila.july.assign_management.adapter.NavDrawerListAdapter;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import com.techila.july.assign_management.util.NavDrawerItem;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -21,6 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.techila.july.assign_management.adapter.NavDrawerListAdapter;
+import com.techila.july.assign_management.util.NavDrawerItem;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ReportsActivity extends Activity {
 	private DrawerLayout mDrawerLayout;

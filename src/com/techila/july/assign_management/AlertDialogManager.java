@@ -1,10 +1,10 @@
 package com.techila.july.assign_management;
 
-import com.techila.july.assign_management.R;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+
+import com.techila.july.assign_management.R;
 
 public class AlertDialogManager {
 	/**

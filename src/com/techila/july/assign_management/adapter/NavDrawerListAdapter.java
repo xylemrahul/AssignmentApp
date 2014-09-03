@@ -1,10 +1,5 @@
 package com.techila.july.assign_management.adapter;
 
-import java.util.ArrayList;
-
-import com.techila.july.assign_management.R;
-import com.techila.july.assign_management.util.NavDrawerItem;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +8,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.techila.july.assign_management.R;
+import com.techila.july.assign_management.util.NavDrawerItem;
+
+import java.util.ArrayList;
 
 public class NavDrawerListAdapter extends BaseAdapter {
 

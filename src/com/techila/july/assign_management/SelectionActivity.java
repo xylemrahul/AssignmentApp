@@ -1,14 +1,5 @@
 package com.techila.july.assign_management;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -24,6 +15,15 @@ import android.widget.Toast;
 import com.techila.july.assign_management.config.Appconstant;
 import com.techila.july.assign_management.util.JSONParser;
 import com.techila.july.assign_management.util.PrefSingleton;
+
+import org.apache.http.NameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class SelectionActivity extends Activity {
 

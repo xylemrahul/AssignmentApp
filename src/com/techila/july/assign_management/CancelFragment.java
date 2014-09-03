@@ -1,19 +1,9 @@
 package com.techila.july.assign_management;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.support.v4.app.ListFragment;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +15,16 @@ import android.widget.Toast;
 import com.techila.july.assign_management.config.Appconstant;
 import com.techila.july.assign_management.util.JSONParser;
 import com.techila.july.assign_management.util.PrefSingleton;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class CancelFragment extends ListFragment {
 
@@ -66,10 +66,17 @@ public class CancelFragment extends ListFragment {
 		super.onActivityCreated(savedInstanceState);
 		Member_Id = mMyPreferences.getPreference("Mem_Id");
 
-		// Loading INBOX in Background Thread
-		new LoadPending().execute();
-
 	}
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        if(isVisibleToUser){
+            // Loading INBOX in Background Thread
+            new LoadPending().execute();
+        }
+    }
 
 	public class LoadPending extends AsyncTask<Void, Void, Integer> {
 
@@ -160,6 +167,7 @@ public class CancelFragment extends ListFragment {
 				prg.dismiss();
 			}
 
+
 			if (error_num == 2) {
 
 				Toast.makeText(getActivity(), "There are no assignments",
@@ -172,7 +180,6 @@ public class CancelFragment extends ListFragment {
 							R.id.created_date });
 			setListAdapter(adapter);
 			setListAdapter(adapter);
-
 		}
 	}
 }

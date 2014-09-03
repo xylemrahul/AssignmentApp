@@ -1,7 +1,5 @@
 package com.techila.july.assign_management;
 
-import com.techila.july.assign_management.adapter.TabsPagerAdapter;
-
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -10,6 +8,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
+
+import com.techila.july.assign_management.adapter.TabsPagerAdapter;
 
 public class AssignFragmentListView extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -83,7 +84,7 @@ public class AssignFragmentListView extends FragmentActivity implements
 		// on tab selected
 		// show respected fragment view
 		viewPager.setCurrentItem(tab.getPosition());
-
+		Log.e("", "");
 	}
 
 	@Override

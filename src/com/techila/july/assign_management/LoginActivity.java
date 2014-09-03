@@ -1,31 +1,5 @@
 package com.techila.july.assign_management;
 
-import static com.techila.july.assign_management.CommonUtilities.DISPLAY_MESSAGE_ACTION;
-import static com.techila.july.assign_management.CommonUtilities.EXTRA_MESSAGE;
-import static com.techila.july.assign_management.CommonUtilities.SENDER_ID;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -57,6 +31,32 @@ import android.widget.Toast;
 import com.google.android.gcm.GCMRegistrar;
 import com.techila.july.assign_management.util.JSONParser;
 import com.techila.july.assign_management.util.PrefSingleton;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.techila.july.assign_management.CommonUtilities.DISPLAY_MESSAGE_ACTION;
+import static com.techila.july.assign_management.CommonUtilities.EXTRA_MESSAGE;
+import static com.techila.july.assign_management.CommonUtilities.SENDER_ID;
 
 @SuppressLint("HandlerLeak")
 public class LoginActivity extends Activity {
